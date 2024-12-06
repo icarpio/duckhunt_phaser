@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=no">
+    <title>Duck Hunt Game</title>
+    <!-- Cargar la librería Phaser -->
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.86.0/dist/phaser.js"></script>
+    
+<style>
+    body {
+        margin: 0; /* Eliminar márgenes por defecto */
+        display: flex; /* Usar Flexbox para centrar el contenido */
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+        height: 100vh; /* Usar toda la altura de la ventana */
+        background-color: #000; /* Color de fondo */
+        overflow: hidden; /* Evitar barras de desplazamiento */
+    }
+
+    /* No modificamos el canvas, solo centramos el contenido */
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Ajuste para pantallas pequeñas (móviles) */
+    @media (max-width: 768px) {
+        .container {
+            padding: 5%; /* Un poco de margen en pantallas pequeñas */
+        }
+    }
+
+    /* Ajustes para pantallas grandes (más de 768px) */
+    @media (min-width: 769px) {
+        .container {
+            padding: 20px; /* Márgenes más grandes para pantallas de escritorio */
+        }
+    }
+</style>
+
+</head>
+<body>
+    <!-- Contenedor del juego -->
+    <div id="game-container"></div>
+    <script>
+        window.playerName = "{{ player_name|escapejs }}"; // Asigna playerName al objeto global
+    </script>
+    <script type="module" src="{% static 'js/utils.js' %}"></script>
+    <script type="module" src="{% static 'js/game.js' %}"></script>
+</body>
+</html>

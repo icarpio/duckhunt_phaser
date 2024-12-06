@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duck Hunt Game</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Duck Hunt Game</h1>
+        <form method="POST" action="{% url 'index' %}">
+            {% csrf_token %}
+            <label for="username">Enter your username:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit" class="custom-green-btn">Start Game</button>
+            <button type="button" onclick="window.location.href='{% url 'scores_list' %}'"class="custom-green-btn">View Rankings</button>
+        </form>
+    </div>
+</body>
+</html>
